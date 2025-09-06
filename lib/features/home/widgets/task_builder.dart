@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:taskati/core/constants/animation.dart';
 import 'package:taskati/core/models/task_model.dart';
@@ -18,59 +19,64 @@ class TaskBuilder extends StatefulWidget {
 }
 
 class _TaskBuilderState extends State<TaskBuilder> {
+  String selectedDate = DateFormat("yyyy-MM-dd").format(DateTime.now());
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: Column(
         children: [
-          DateHeader(),
+          DateHeader(selectedDate: selectedDate),
           Gap(50),
           Expanded(
             child: ValueListenableBuilder(
               valueListenable: HiveProvider.taskBox.listenable(),
               builder: (context, box, child) {
                 List<TaskModel> tasks = box.values.toList().cast<TaskModel>();
-                //box.values.forEach((task) {
-                // if (task.date == selectedDate) {
-                //   tasks.add(task);
-                // }
-                //});
+                for (var model in box.values) {
+                  if (model.date == selectedDate) {
+                    tasks.add(model);
+                  }
+                }
                 if (tasks.isEmpty) {
-                  return Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Lottie.asset(
-                        AppAnimation.emptyListAnimation,
-                        width: 400,
-                      ),
-                      
-                      Text(
-                        "No Tasks Yet,please add some tasks!!",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.darkColor,
+                  return Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Lottie.asset(
+                          AppAnimation.emptyListAnimation,
+                          width: 400,
                         ),
-                      ),
-                    ],
-                  );
-                } else {
-                  return ListView.separated(
-                    itemBuilder: (context, index) {
-                      return TaskCard(
-                        task: tasks[index],
-                        onCompletedTak: () {
-                          box.put(tasks[index].id, tasks[index].copyWith(isCompleted: true));
-                        },
-                        onDeleteTask: () {
-                          box.delete(tasks[index].id);
-                        },
-                      );
-                    },
-                    separatorBuilder: (context, index) => Gap(10),
-                    itemCount: tasks.length,
+                        Text(
+                          "No Tasks Yet,please add some tasks!!",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.darkColor,
+                          ),
+                        ),
+                      ],
+                    ),
                   );
                 }
+                return ListView.separated(
+                  itemBuilder: (context, index) {
+                    return TaskCard(
+                      task: tasks[index],
+                      onCompletedTak: () {
+                        box.put(
+                          tasks[index].id,
+                          tasks[index].copyWith(isCompleted: true),
+                        );
+                      },
+                      onDeleteTask: () {
+                        box.delete(tasks[index].id);
+                      },
+                    );
+                  },
+                  separatorBuilder: (context, index) => Gap(10),
+                  itemCount: tasks.length,
+                );
               },
             ),
           ),

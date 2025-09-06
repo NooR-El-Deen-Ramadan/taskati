@@ -11,16 +11,22 @@ import 'package:taskati/core/utils/fonts.dart';
 import 'package:taskati/core/widgets/main_button.dart';
 import 'package:taskati/features/task_managment/add_task_screen.dart';
 
+// ignore: must_be_immutable
 class DateHeader extends StatefulWidget {
-  const DateHeader({super.key});
+  String selectedDate;
+
+  DateHeader({super.key,
+  required this.selectedDate 
+  });
 
   @override
-  State<DateHeader> createState() => _DateHeaderState();
+  State<DateHeader> createState() => _DateHeaderState(
+    
+  );
 }
 
 class _DateHeaderState extends State<DateHeader> {
   //where to store the selected date?
-  String selectedDate = DateFormat("yyyy-MM-dd").format(DateTime.now());
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -32,13 +38,13 @@ class _DateHeaderState extends State<DateHeader> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    DateFormat("d MMMM yyyy").format(DateTime.parse(selectedDate)),
+                    DateFormat("d MMMM yyyy").format(DateTime.parse(widget.selectedDate)),
                     style: AppFontStyles.getSemiBold(
                       fontColor: AppColors.darkColor,
                     ),
                   ),
                   Text(
-                    DateFormat("EEEE").format(DateTime.parse(selectedDate)),
+                    DateFormat("EEEE").format(DateTime.parse(widget.selectedDate)),
                     style: AppFontStyles.getSemiBold(
                       fontColor: AppColors.darkColor,
                     ),
@@ -69,10 +75,10 @@ class _DateHeaderState extends State<DateHeader> {
           selectedTextColor: AppColors.whiteColor,
           onDateChange: (date) {
             setState(() {
-              selectedDate = DateFormat("yyyy-MM-dd").format(date);
+              widget.selectedDate = DateFormat("yyyy-MM-dd").format(date);
             });
-            
-            log("Selected Date: $selectedDate");
+
+            log("Selected Date: ${widget.selectedDate}");
             },
         ),
       ],
