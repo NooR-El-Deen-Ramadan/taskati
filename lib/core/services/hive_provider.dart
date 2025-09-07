@@ -11,7 +11,8 @@ class HiveProvider {
   static String taskBoxName = "taskBox";
   static String isDarkKey="isDark";
   static Future<void> init() async {
-      if (!Hive.isAdapterRegistered(32)) {
+    // Register TaskModel adapter once, using the correct typeId (matches @HiveType(typeId: 0))
+    if (!Hive.isAdapterRegistered(0)) {
       Hive.registerAdapter(TaskModelAdapter());
     }
     userBox = await Hive.openBox(userBoxName);

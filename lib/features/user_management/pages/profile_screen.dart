@@ -1,9 +1,13 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:taskati/core/constants/images.dart';
 import 'package:taskati/core/services/hive_provider.dart';
 import 'package:taskati/core/utils/colors.dart';
+import 'package:taskati/core/utils/fonts.dart';
+import 'package:taskati/core/widgets/main_button.dart';
 import 'package:taskati/core/widgets/main_text_form_field.dart';
+import 'package:image_picker/image_picker.dart';
 
 // ignore: must_be_immutable
 class ProfileScreen extends StatefulWidget {
@@ -14,19 +18,127 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  final TextEditingController nameController = TextEditingController();
   @override
   void initState() {
     super.initState();
+    final savedName = HiveProvider.getUserData(HiveProvider.nameKey);
+    if (savedName is String && savedName.isNotEmpty) {
+      nameController.text = savedName;
+    } else {
+      nameController.text = widget.name;
+    }
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    super.dispose();
+  }
+
+  Future<void> pickImage(bool isCamera) async {
+    final picker = ImagePicker();
+    final picked = await picker.pickImage(
+      source: isCamera ? ImageSource.camera : ImageSource.gallery,
+    );
+    if (picked != null) {
+      HiveProvider.cachUserData(HiveProvider.imageKey, picked.path);
+      if (!mounted) return;
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Image updated')));
+      setState(() {});
+    }
+  }
+
+  void showImageSourceSheet() {
+    showModalBottomSheet(
+      elevation: 3,
+      context: context,
+      builder: (context) {
+        return SafeArea(
+          child: SizedBox(
+            height: 170,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Gap(10),
+                  ListTile(
+                    leading: const Icon(
+                      Icons.photo_library,
+                      color: AppColors.primaryColor,
+                    ),
+                    title: Text(
+                      'Gallery',
+                      style: AppFontStyles.getRegular(
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      pickImage(false);
+                    },
+                  ),
+                  Divider(),
+                  ListTile(
+                    leading: const Icon(
+                      Icons.photo_camera,
+                      color: AppColors.primaryColor,
+                    ),
+                    title: Text(
+                      'Camera',
+                      style: AppFontStyles.getRegular(
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                      pickImage(true);
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    var isDark = HiveProvider.getUserData(
-                      HiveProvider.isDarkKey,
-                    )??false;
+    var isDark = HiveProvider.getUserData(HiveProvider.isDarkKey) ?? false;
+    final String? imagePath = HiveProvider.getUserData(HiveProvider.imageKey);
+    final ImageProvider avatarImage =
+        (imagePath != null && File(imagePath).existsSync())
+        ? FileImage(File(imagePath))
+        : AssetImage(AppImages.userPNG);
     return Scaffold(
       body: Center(
         child: Scaffold(
+          bottomNavigationBar: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 65),
+              child: MainButton(
+                buttonText: "Save",
+                onPressed: () {
+                  final newName = nameController.text;
+                  if (newName.isEmpty) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Name cannot be empty')),
+                    );
+                    return;
+                  }
+                  HiveProvider.cachUserData(HiveProvider.nameKey, newName);
+                  ScaffoldMessenger.of(
+                    context,
+                  ).showSnackBar(const SnackBar(content: Text('Name updated')));
+                  setState(() {});
+                },
+              ),
+            ),
+          ),
           appBar: AppBar(
             actions: [
               Padding(
@@ -37,7 +149,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     HiveProvider.cachUserData(HiveProvider.isDarkKey, !isDark);
                     setState(() {});
                   },
-                  icon: Icon(!isDark? Icons.dark_mode_rounded:Icons.sunny),
+                  icon: Icon(!isDark ? Icons.dark_mode_rounded : Icons.sunny),
                 ),
               ),
             ],
@@ -59,18 +171,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       CircleAvatar(
                         backgroundColor: AppColors.primaryColor,
                         radius: 120,
-                        child: Image.asset(AppImages.userPNG),
+                        backgroundImage: avatarImage,
                       ),
                       Positioned(
                         bottom: 0,
                         right: 0,
-                        child: CircleAvatar(
-                          radius: 30,
-                          backgroundColor: AppColors.whiteColor,
-
-                          child: Icon(
-                            Icons.camera_alt,
-                            color: AppColors.primaryColor,
+                        child: GestureDetector(
+                          onTap: showImageSourceSheet,
+                          child: CircleAvatar(
+                            radius: 30,
+                            backgroundColor: AppColors.whiteColor,
+                            child: Icon(
+                              Icons.camera_alt,
+                              color: AppColors.primaryColor,
+                            ),
                           ),
                         ),
                       ),
@@ -80,7 +194,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Divider(),
                   Gap(30),
 
-                  MainTextFormField(textFormFieldText: widget.name),
+                  MainTextFormField(
+                    textFormFieldText: 'Enter Your Name',
+                    controller: nameController,
+                  ),
                 ],
               ),
             ),

@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:taskati/features/home/widgets/home_header.dart';
 import 'package:taskati/features/task_managment/widgets/task_builder.dart';
 
+// ignore: must_be_immutable
 class HomeScreen extends StatefulWidget {
    HomeScreen({super.key,  this.nameController});
 TextEditingController? nameController;

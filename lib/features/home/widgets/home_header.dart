@@ -22,46 +22,56 @@ class _HomeHeaderState extends State<HomeHeader> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Hello, ${HiveProvider.getUserData(HiveProvider.nameKey).split(" ")[0]}",
-                style: AppFontStyles.getSemiBold(
-                  fontColor: AppColors.primaryColor,
-                ),
-              ),
-              Text(
-                "Have A Nice Day",
-                style: AppFontStyles.getMedium(fontColor: AppColors.darkColor),
-              ),
-            ],
-          ),
-        ),
-        GestureDetector(
-          onTap: () {
-            pushWithoutReplacment(
-              context: context,
-              screen: ProfileScreen( name: widget.name,),
-            ).then((value) => setState(() {}));
-          },
-          child: CircleAvatar(
-            backgroundColor: AppColors.primaryColor,
-            radius: 28,
-            child: CircleAvatar(
-              radius: 25,
-              backgroundColor: AppColors.primaryColor,
-              backgroundImage:
-                  HiveProvider.getUserData(HiveProvider.imageKey) != null
-                  ? FileImage(
-                      File(HiveProvider.getUserData(HiveProvider.imageKey)),
-                    )
-                  : AssetImage(AppImages.userPNG),
-            ),
-          ),
-        ),
+        userGreeting(),
+        profileIcon(context),
       ],
     );
+  }
+
+
+
+  Expanded userGreeting() {
+    return Expanded(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Hello, ${HiveProvider.getUserData(HiveProvider.nameKey).split(" ")[0]}",
+              style: AppFontStyles.getSemiBold(
+                fontColor: AppColors.primaryColor,
+              ),
+            ),
+            Text(
+              "Have A Nice Day",
+              style: AppFontStyles.getMedium(fontColor: AppColors.darkColor),
+            ),
+          ],
+        ),
+      );
+  }
+
+  GestureDetector profileIcon(BuildContext context) {
+    return GestureDetector(
+        onTap: () {
+          pushWithoutReplacment(
+            context: context,
+            screen: ProfileScreen( name: widget.name,),
+          ).then((value) => setState(() {}));
+        },
+        child: CircleAvatar(
+          backgroundColor: AppColors.primaryColor,
+          radius: 28,
+          child: CircleAvatar(
+            radius: 25,
+            backgroundColor: AppColors.primaryColor,
+            backgroundImage:
+                HiveProvider.getUserData(HiveProvider.imageKey) != null
+                ? FileImage(
+                    File(HiveProvider.getUserData(HiveProvider.imageKey)),
+                  )
+                : AssetImage(AppImages.userPNG),
+          ),
+        ),
+      );
   }
 }

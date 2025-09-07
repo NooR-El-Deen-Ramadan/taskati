@@ -209,7 +209,6 @@ class _AddAndEditTaskScreenState extends State<AddAndEditTaskScreen> {
     );
   }
 
-  //missing end time validation
   Row timeSelection() {
     return Row(
       children: [
@@ -230,6 +229,7 @@ class _AddAndEditTaskScreenState extends State<AddAndEditTaskScreen> {
                     context: context,
                     initialTime: selectedStartTime,
                   );
+                  //start time validtion
                   if (selectedStart != null) {
                     if (selectedStart.isBefore(TimeOfDay.now())) {
                       showSnackBar(
@@ -270,12 +270,15 @@ class _AddAndEditTaskScreenState extends State<AddAndEditTaskScreen> {
                 controller: endTimeController,
                 icon: Icon(Icons.timer),
                 onTap: () async {
-                  final selectedEnd = await showTimePicker(
+                  final pickedEnd = await showTimePicker(
                     context: context,
                     initialTime: selectedStartTime,
                   );
-                  if (selectedEnd != null) {
-                    if (selectedEnd.isBefore(selectedStartTime)) {
+                  if (pickedEnd != null) {
+                    final adjustedEnd = pickedEnd.isBefore(selectedStartTime)
+                        ? selectedStartTime
+                        : pickedEnd;
+                    if (pickedEnd.isBefore(selectedStartTime)) {
                       showSnackBar(
                         // ignore: use_build_context_synchronously
                         context: context,
@@ -283,11 +286,8 @@ class _AddAndEditTaskScreenState extends State<AddAndEditTaskScreen> {
                       );
                     }
                     setState(() {
-                      selectedEndTime = selectedEnd;
-                      endTimeController.text = selectedEnd.format(
-                        // ignore: use_build_context_synchronously
-                        context,
-                      );
+                      selectedEndTime = adjustedEnd;
+                      endTimeController.text = adjustedEnd.format(context);
                     });
                   }
                 },
