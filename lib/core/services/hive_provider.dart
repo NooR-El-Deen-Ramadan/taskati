@@ -9,6 +9,7 @@ class HiveProvider {
   static String userBoxName = "userBox";
   static String isUploadKey = "isUpload";
   static String taskBoxName = "taskBox";
+  static String isDarkKey="isDark";
   static Future<void> init() async {
       if (!Hive.isAdapterRegistered(32)) {
       Hive.registerAdapter(TaskModelAdapter());
@@ -29,7 +30,7 @@ class HiveProvider {
  static void cachTaskData(String key,TaskModel task){
    taskBox.put(key, task);
  }
- static getTaskData(String key){
+ static TaskModel? getTaskData(String key){
    return taskBox.get(key);
  }
 

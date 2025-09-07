@@ -36,7 +36,7 @@ class _UplodeScreenState extends State<UplodeScreen> {
               HiveProvider.cachUserData(HiveProvider.imageKey, imagePath);
               if (imagePath != null && nameController.text.isNotEmpty) {
                 HiveProvider.cachUserData(HiveProvider.isUploadKey, true);
-                pushAndRemove(context: context, screen: HomeScreen());
+                pushAndRemove(context: context, screen: HomeScreen(nameController: nameController,));
               } else if (imagePath == null && nameController.text.isNotEmpty) {
                 showSnackBar(
                   context: context,

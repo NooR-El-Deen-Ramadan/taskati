@@ -7,14 +7,17 @@ import 'package:taskati/core/utils/colors.dart';
 import 'package:taskati/core/utils/fonts.dart';
 import 'package:taskati/features/user_management/pages/profile_screen.dart';
 
+// ignore: must_be_immutable
 class HomeHeader extends StatefulWidget {
-  const HomeHeader({super.key});
+   HomeHeader({super.key});
+  String name=HiveProvider.getUserData(HiveProvider.nameKey);
 
   @override
   State<HomeHeader> createState() => _HomeHeaderState();
 }
 
 class _HomeHeaderState extends State<HomeHeader> {
+  
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -40,7 +43,7 @@ class _HomeHeaderState extends State<HomeHeader> {
           onTap: () {
             pushWithoutReplacment(
               context: context,
-              screen: ProfileScreen(),
+              screen: ProfileScreen( name: widget.name,),
             ).then((value) => setState(() {}));
           },
           child: CircleAvatar(

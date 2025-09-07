@@ -17,10 +17,19 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: AppTheme.lightTheme,
-      debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
+    return ValueListenableBuilder(
+      valueListenable: HiveProvider.userBox.listenable(),
+      builder: (context, box, child) {
+        bool isDark = HiveProvider.getUserData(HiveProvider.isDarkKey)??false;
+        return MaterialApp(
+        themeMode: isDark? ThemeMode.dark:ThemeMode.light ,
+theme:  AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        debugShowCheckedModeBanner: false,
+        home: const SplashScreen(),
+      );
+      },
+       
     );
   }
 }

@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 import 'package:taskati/features/home/widgets/home_header.dart';
-import 'package:taskati/features/home/widgets/task_builder.dart';
+import 'package:taskati/features/task_managment/widgets/task_builder.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+   HomeScreen({super.key,  this.nameController});
+TextEditingController? nameController;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

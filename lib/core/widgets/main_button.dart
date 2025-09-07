@@ -6,12 +6,12 @@ import 'package:taskati/core/utils/fonts.dart';
 
 class MainButton extends StatelessWidget {
   const MainButton({
-    Key? key,
+    super.key,
     required this.buttonText,
     this.width,
     this.height,
     required this.onPressed,
-  }) : super(key: key);
+  });
   final String buttonText;
   final double? width;
   final double? height;

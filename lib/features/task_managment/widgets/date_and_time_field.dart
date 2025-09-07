@@ -15,7 +15,7 @@ final Icon icon;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      style: AppFontStyles.getRegular(fontColor: AppColors.darkColor),
+        style: AppFontStyles.getRegular(),
       controller: controller,
       readOnly: true,
       decoration: InputDecoration(

@@ -5,14 +5,13 @@ import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 import 'package:taskati/core/constants/animation.dart';
 import 'package:taskati/core/models/task_model.dart';
-import 'package:taskati/core/services/hive_provider.dart';
-import 'package:taskati/core/utils/colors.dart';
-import 'package:taskati/features/home/widgets/date_header.dart';
+  import 'package:taskati/core/services/hive_provider.dart';
+  import 'package:taskati/features/home/widgets/date_header.dart';
 
-import 'package:taskati/features/home/widgets/task_card.dart';
+  import 'package:taskati/features/task_managment/widgets/task_card.dart';
 
-class TaskBuilder extends StatefulWidget {
-  const TaskBuilder({super.key});
+  class TaskBuilder extends StatefulWidget {
+    const TaskBuilder({super.key});
 
   @override
   State<TaskBuilder> createState() => _TaskBuilderState();
@@ -26,18 +25,23 @@ class _TaskBuilderState extends State<TaskBuilder> {
     return Expanded(
       child: Column(
         children: [
-          DateHeader(selectedDate: selectedDate),
-          Gap(50),
+          DateHeader(
+            selectedDate: selectedDate,
+            onSelectedDateChanged: (newDate) {
+              setState(() {
+                selectedDate = newDate;
+              });
+            },
+          ),
+          
           Expanded(
             child: ValueListenableBuilder(
               valueListenable: HiveProvider.taskBox.listenable(),
               builder: (context, box, child) {
-                List<TaskModel> tasks = box.values.toList().cast<TaskModel>();
-                for (var model in box.values) {
-                  if (model.date == selectedDate) {
-                    tasks.add(model);
-                  }
-                }
+                List<TaskModel> tasks = box.values
+                    .cast<TaskModel>()
+                    .where((model) => model.date == selectedDate)
+                    .toList();
                 if (tasks.isEmpty) {
                   return Center(
                     child: Column(
@@ -52,7 +56,6 @@ class _TaskBuilderState extends State<TaskBuilder> {
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
-                            color: AppColors.darkColor,
                           ),
                         ),
                       ],
