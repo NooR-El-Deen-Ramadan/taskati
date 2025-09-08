@@ -39,27 +39,41 @@ is a modern and intuitive task management application built with Flutter. The na
 
 ## 🌙 Dark Mode
 
+## 🌙 Dark Mode
+
+---
+
 #### 🏠 Main Screens
 <div align="center">
   <img src="readme_assets/main_screen_taskadded_dark.png" width="200" alt="Main Screen - Task Added (Dark)"/>
+  &nbsp;&nbsp;&nbsp;
   <img src="readme_assets/main_screen_notaskadded_dark.png" width="200" alt="Main Screen - No Task Added (Dark)"/>
 </div>
+
+---
 
 #### 🚀 Splash
 <div align="center">
   <img src="readme_assets/splash_screen_dark.png" width="200" alt="Splash Screen (Dark)"/>
 </div>
 
+---
+
 #### 📝 Task Screens
 <div align="center">
   <img src="readme_assets/task_details_dark.png" width="200" alt="Task Details (Dark)"/>
 </div>
 
+---
+
 #### 📅 Pickers
 <div align="center">
   <img src="readme_assets/date_picker_dark.png" width="200" alt="Date Picker (Dark)"/>
+  &nbsp;&nbsp;&nbsp;
   <img src="readme_assets/time_picker_dark.png" width="200" alt="Time Picker (Dark)"/>
 </div>
+
+---
 
 #### 👤 Profile
 <div align="center">
@@ -70,35 +84,48 @@ is a modern and intuitive task management application built with Flutter. The na
 
 ## ☀️ Light Mode
 
+---
+
 #### 🏠 Main Screens
 <div align="center">
   <img src="readme_assets/main_screen_notaskadded_light.png" width="200" alt="Main Screen - No Task Added (Light)"/>
+  &nbsp;&nbsp;&nbsp;
   <img src="readme_assets/main_screen_taskadded_light.png" width="200" alt="Main Screen - Task Added (Light)"/>
 </div>
+
+---
 
 #### 🚀 Splash
 <div align="center">
   <img src="readme_assets/splash_screen_light.png" width="200" alt="Splash Screen (Light)"/>
 </div>
 
+---
+
 #### 📝 Task Screens
 <div align="center">
   <img src="readme_assets/task_datils_light.png" width="200" alt="Task Details (Light)"/>
+  &nbsp;&nbsp;&nbsp;
   <img src="readme_assets/task_completed.png" width="200" alt="Task Completed"/>
+  &nbsp;&nbsp;&nbsp;
   <img src="readme_assets/task_deleted.png" width="200" alt="Task Deleted"/>
 </div>
+
+---
 
 #### 📅 Pickers
 <div align="center">
   <img src="readme_assets/date_picker_light.png" width="200" alt="Date Picker (Light)"/>
+  &nbsp;&nbsp;&nbsp;
   <img src="readme_assets/time_picker_light.png" width="200" alt="Time Picker (Light)"/>
 </div>
+
+---
 
 #### 👤 Profile
 <div align="center">
   <img src="readme_assets/profile_edit_light.png" width="200" alt="Profile Edit (Light)"/>
 </div>
-
 
 
   
