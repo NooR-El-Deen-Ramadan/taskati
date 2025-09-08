@@ -31,36 +31,80 @@ is a modern and intuitive task management application built with Flutter. The na
 - 🎯 **Goal Setting** - Set and track personal productivity goals
 - 🗂️ **Task Organization** - Drag and drop functionality for task reordering
 
-## 📱 Screenshots
 
-### Main Screens
+
+### 📱 App Screenshots
+
+---
+
+## 🌙 Dark Mode
+
+#### 🏠 Main Screens
 <div align="center">
-  <img src="readme_assets/main_screen_taskadded_dark.png" width="200" alt="Home Screen"/>
-  <img src="readme_assets/main_screen_notaskadded_dark.png" width="200" alt="Task List"/>
-  <img src="readme_assets/main_screen_notaskadded_light.png" width="200" alt="Add Task"/>
-  <img src="readme_assets/main_screen_taskadded_light.png" width="200" alt="Task Details"/>
-  <img src="readme_assets/splash_screen_light.png" width="200" alt="Task Details"/>
-  <img src="readme_assets/splash_screen_dark.png" width="200" alt="Task Details"/>
-  <img src="readme_assets/task_datils_light.png" width="200" alt="Task Details"/>
-  <img src="readme_assets/task_datils_dark.png" width="200" alt="Task Details"/>
-  <img src="readme_assets/task_completed.png" width="200" alt="Task Details"/>
-  <img src="readme_assets/task_deleted.png" width="200" alt="Task Details"/>
-  
+  <img src="readme_assets/main_screen_taskadded_dark.png" width="200" alt="Main Screen - Task Added (Dark)"/>
+  <img src="readme_assets/main_screen_notaskadded_dark.png" width="200" alt="Main Screen - No Task Added (Dark)"/>
 </div>
 
-### Additional Screens
+#### 🚀 Splash
 <div align="center">
-  <img src="readme_assets/date_picker_light.png" width="200" alt="Categories"/>
-  <img src="readme_assets/date_picker_dark.png" width="200" alt="Settings"/>
-  <img src="readme_assets/profile_edit_light.png" width="200" alt="Dark Mode"/>
-  <img src="readme_assets/profile_edit_dark.png" width="200" alt="Notifications"/>
-  <img src="readme_assets/time_picker_light.png" width="200" alt="Notifications"/>
-  <img src="readme_assets/time_picker_dark.png" width="200" alt="Notifications"/>
-  
+  <img src="readme_assets/splash_screen_dark.png" width="200" alt="Splash Screen (Dark)"/>
+</div>
+
+#### 📝 Task Screens
+<div align="center">
+  <img src="readme_assets/task_datils_dark.png" width="200" alt="Task Details (Dark)"/>
+  <img src="readme_assets/task_completed.png" width="200" alt="Task Completed"/>
+  <img src="readme_assets/task_deleted.png" width="200" alt="Task Deleted"/>
+</div>
+
+#### 📅 Pickers
+<div align="center">
+  <img src="readme_assets/date_picker_dark.png" width="200" alt="Date Picker (Dark)"/>
+  <img src="readme_assets/time_picker_dark.png" width="200" alt="Time Picker (Dark)"/>
+</div>
+
+#### 👤 Profile
+<div align="center">
+  <img src="readme_assets/profile_edit_dark.png" width="200" alt="Profile Edit (Dark)"/>
+</div>
+
+---
+
+## ☀️ Light Mode
+
+#### 🏠 Main Screens
+<div align="center">
+  <img src="readme_assets/main_screen_notaskadded_light.png" width="200" alt="Main Screen - No Task Added (Light)"/>
+  <img src="readme_assets/main_screen_taskadded_light.png" width="200" alt="Main Screen - Task Added (Light)"/>
+</div>
+
+#### 🚀 Splash
+<div align="center">
+  <img src="readme_assets/splash_screen_light.png" width="200" alt="Splash Screen (Light)"/>
+</div>
+
+#### 📝 Task Screens
+<div align="center">
+  <img src="readme_assets/task_datils_light.png" width="200" alt="Task Details (Light)"/>
+</div>
+
+#### 📅 Pickers
+<div align="center">
+  <img src="readme_assets/date_picker_light.png" width="200" alt="Date Picker (Light)"/>
+  <img src="readme_assets/time_picker_light.png" width="200" alt="Time Picker (Light)"/>
+</div>
+
+#### 👤 Profile
+<div align="center">
+  <img src="readme_assets/profile_edit_light.png" width="200" alt="Profile Edit (Light)"/>
+</div>
+
+
+
   
 
   
-</div>
+
 
 ## 🏗️ Architecture
 
