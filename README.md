@@ -52,9 +52,7 @@ is a modern and intuitive task management application built with Flutter. The na
 
 #### 📝 Task Screens
 <div align="center">
-  <img src="readme_assets/task_datils_dark.png" width="200" alt="Task Details (Dark)"/>
-  <img src="readme_assets/task_completed.png" width="200" alt="Task Completed"/>
-  <img src="readme_assets/task_deleted.png" width="200" alt="Task Deleted"/>
+  <img src="readme_assets/task_details_dark.png" width="200" alt="Task Details (Dark)"/>
 </div>
 
 #### 📅 Pickers
@@ -86,6 +84,8 @@ is a modern and intuitive task management application built with Flutter. The na
 #### 📝 Task Screens
 <div align="center">
   <img src="readme_assets/task_datils_light.png" width="200" alt="Task Details (Light)"/>
+  <img src="readme_assets/task_completed.png" width="200" alt="Task Completed"/>
+  <img src="readme_assets/task_deleted.png" width="200" alt="Task Deleted"/>
 </div>
 
 #### 📅 Pickers
