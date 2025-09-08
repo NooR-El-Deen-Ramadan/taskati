@@ -35,18 +35,31 @@ is a modern and intuitive task management application built with Flutter. The na
 
 ### Main Screens
 <div align="center">
-  <img src="assets/screenshots/home_screen.png" width="200" alt="Home Screen"/>
-  <img src="assets/screenshots/task_list.png" width="200" alt="Task List"/>
-  <img src="assets/screenshots/add_task.png" width="200" alt="Add Task"/>
-  <img src="assets/screenshots/task_details.png" width="200" alt="Task Details"/>
+  <img src="readme_assets/main_screen_taskadded_dark.png" width="200" alt="Home Screen"/>
+  <img src="readme_assets/main_screen_notaskadded_dark.png" width="200" alt="Task List"/>
+  <img src="readme_assets/main_screen_notaskadded_light.png" width="200" alt="Add Task"/>
+  <img src="readme_assets/main_screen_taskadded_light.png" width="200" alt="Task Details"/>
+  <img src="readme_assets/splash_screen_light.png" width="200" alt="Task Details"/>
+  <img src="readme_assets/splash_screen_dark.png" width="200" alt="Task Details"/>
+  <img src="readme_assets/task_datils_light.png" width="200" alt="Task Details"/>
+  <img src="readme_assets/task_datils_dark.png" width="200" alt="Task Details"/>
+  <img src="readme_assets/task_completed.png" width="200" alt="Task Details"/>
+  <img src="readme_assets/task_deleted.png" width="200" alt="Task Details"/>
+  
 </div>
 
 ### Additional Screens
 <div align="center">
-  <img src="assets/screenshots/categories.png" width="200" alt="Categories"/>
-  <img src="assets/screenshots/settings.png" width="200" alt="Settings"/>
-  <img src="assets/screenshots/dark_mode.png" width="200" alt="Dark Mode"/>
-  <img src="assets/screenshots/notifications.png" width="200" alt="Notifications"/>
+  <img src="readme_assets/date_picker_light.png" width="200" alt="Categories"/>
+  <img src="readme_assets/date_picker_dark.png" width="200" alt="Settings"/>
+  <img src="readme_assets/profile_edit_light.png" width="200" alt="Dark Mode"/>
+  <img src="readme_assets/profile_edit_dark.png" width="200" alt="Notifications"/>
+  <img src="readme_assets/time_picker_light.png" width="200" alt="Notifications"/>
+  <img src="readme_assets/time_picker_dark.png" width="200" alt="Notifications"/>
+  
+  
+
+  
 </div>
 
 ## 🏗️ Architecture
@@ -116,46 +129,12 @@ flutter build apk --release
 flutter build ios --release
 ```
 
-## 📦 Dependencies
-
-### Core Dependencies
-```yaml
-dependencies:
-  flutter:
-    sdk: flutter
-  cupertino_icons: ^1.0.2
-  provider: ^6.0.0  # State management
-  sqflite: ^2.0.0  # Local database
-  shared_preferences: ^2.0.0  # Simple data storage
-  intl: ^0.18.0  # Internationalization
-  
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
-  flutter_lints: ^2.0.0
-```
-
 ### Additional Packages
 - **UI/UX**: `flutter_animate`, `lottie`, `cached_network_image`
 - **Storage**: `hive`, `path_provider`
 - **Notifications**: `flutter_local_notifications`
 - **Date/Time**: `table_calendar`, `flutter_datetime_picker`
 - **Navigation**: `go_router` or `auto_route`
-
-## 🎨 Design System
-
-### Color Palette
-- **Primary**: `#6366F1` (Indigo)
-- **Secondary**: `#8B5CF6` (Purple)
-- **Success**: `#10B981` (Green)
-- **Warning**: `#F59E0B` (Amber)
-- **Error**: `#EF4444` (Red)
-- **Background**: `#F8FAFC` (Light) / `#0F172A` (Dark)
-
-### Typography
-- **Headings**: Inter / SF Pro Display
-- **Body**: Inter / SF Pro Text
-- **Code**: JetBrains Mono
 
 ## 🧪 Testing
 
@@ -169,22 +148,6 @@ flutter test
 - Widget Tests: UI components
 - Integration Tests: End-to-end user flows
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the project
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-### Development Guidelines
-- Follow the existing code style
-- Add tests for new features
-- Update documentation as needed
-- Ensure all tests pass before submitting PR
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -193,15 +156,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Nour El-Deen Ramadan**
 - GitHub: [@NooR-El-Deen-Ramadan](https://github.com/NooR-El-Deen-Ramadan)
-- Email: [your-email@example.com]
-- LinkedIn: [Your LinkedIn Profile]
-
-## 🙏 Acknowledgments
-
-- Flutter team for the amazing framework
-- Material Design for design inspiration
-- Community contributors and testers
-- Open source packages that made this project possible
+- Email: [@nooraldeinrmadan@gamil.com]
 
 ## 🔄 Version History
 
@@ -210,15 +165,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **v1.2.0** - Implemented dark mode and notifications
 - **v1.3.0** - Added search and filter functionality
 
-## 📞 Support
 
-If you encounter any issues or have questions:
-- Create an issue on GitHub
-- Email: [support-email@example.com]
-- Documentation: [Link to documentation]
-
----
-
-<div align="center">
-  <strong>⭐ Don't forget to star this repository if you found it helpful! ⭐</strong>
-</div>
