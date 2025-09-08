@@ -37,7 +37,7 @@ is a modern and intuitive task management application built with Flutter. The na
 
 ---
 
-## 🌙 Dark Mode
+
 
 ## 🌙 Dark Mode
 
