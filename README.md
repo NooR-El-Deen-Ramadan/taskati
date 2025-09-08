@@ -227,7 +227,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Nour El-Deen Ramadan**
 - GitHub: [@NooR-El-Deen-Ramadan](https://github.com/NooR-El-Deen-Ramadan)
-- Email: [@nooraldeinrmadan@gamil.com]
+- Email: nooraldeinrmadan@gamil.com
 
 ## 🔄 Version History
 
